@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: ./app
+    container_name: securepipe-web
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    container_name: securepipe-zap
+    depends_on:
+      web:
+        condition: service_healthy
+    command: >
+      zap-baseline.py
+      -t http://web:5000
+      -r zap-report.html
+      -J zap-report.json
+      -I
+    volumes:
+      - ./reports:/zap/wrk/:rw
+    profiles:
+      - dast

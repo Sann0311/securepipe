@@ -1,0 +1,9 @@
+# Core
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# !! INTENTIONAL VULNERABILITY: older Jinja2 with known CVEs (pip-audit will flag this)
+Jinja2==3.1.2
+
+# Utilities
+requests==2.31.0
