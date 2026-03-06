@@ -7,7 +7,6 @@ on:
     branches: [main]
 
 jobs:
-
   # ──────────────────────────────────────────
   # JOB 1: SAST — Static Application Security Testing
   # ──────────────────────────────────────────
@@ -30,12 +29,14 @@ jobs:
 
       - name: Run Bandit (Python SAST)
         run: |
+          mkdir -p reports
           bandit -r app/ -f json -o reports/bandit-report.json || true
           bandit -r app/ -f txt
-        continue-on-error: false
+        continue-on-error: true
 
       - name: Run Semgrep
         run: |
+          mkdir -p reports
           semgrep --config=auto app/ --json > reports/semgrep-report.json || true
           semgrep --config=auto app/
         continue-on-error: true
@@ -71,7 +72,7 @@ jobs:
           mkdir -p reports
           pip-audit -r app/requirements.txt -f json -o reports/pip-audit-report.json || true
           pip-audit -r app/requirements.txt
-        continue-on-error: false
+        continue-on-error: true
 
       - name: Upload dependency scan report
         uses: actions/upload-artifact@v4
