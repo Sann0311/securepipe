@@ -109,7 +109,7 @@ This app contains **deliberate vulnerabilities** to showcase what the tools dete
 | Hardcoded secret | `app.py:8` | Bandit (B105) |
 | SQL Injection | `/user` endpoint | Bandit (B608) + ZAP |
 | Command Injection | `/ping` endpoint | Bandit (B602) |
-| Outdated dependency | `Jinja2==3.0.0` | pip-audit |
+| Outdated dependency | `Jinja2==3.1.2` | pip-audit |
 
 > ✅ See the `fix/remediation` branch for the patched version with all vulnerabilities resolved.
 
