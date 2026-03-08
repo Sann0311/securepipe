@@ -168,4 +168,4 @@ Read the full write-up: [How I Built a DevSecOps Pipeline That Catches Vulnerabi
 
 **Saniya Bhaladare**  
 M.S. Cybersecurity Engineering, University of Washington Bothell  
-[LinkedIn](https://linkedin.com/in/saniyabhaladhare) | [Portfolio](https://saniyabhaladhare.me)
+[LinkedIn](https://www.linkedin.com/in/saniyb/) | [Portfolio](https://saniyabhaladhare.me)
